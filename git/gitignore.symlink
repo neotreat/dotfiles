@@ -1,3 +1,10 @@
+# System Files
 .DS_Store
-*~
-*.swp
+
+# IDE Project Files
+.idea
+.project
+
+# Build Artefacts
+build/
+dist/
