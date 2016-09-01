@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Usage: vscode-extensions-install
+#
+# Installs the Visual Studio Code extensions listed in your extensions.txt
+# file located at ~/.dotfiles/vscode.symlink/extensions.txt
+#
+# You can generate a new list based on currently installed
+# extensions via vscode-extensions-backup
+
+set -e
+
+while read extension; do
+  code --install-extension $extension
+done < ~/.dotfiles/vscode.symlink/extensions.txt
