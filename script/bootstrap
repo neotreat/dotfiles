@@ -1,36 +1,72 @@
 #!/usr/bin/env bash
-#
-# bootstrap installs things.
 
-cd "$(dirname "$0")/.."
-DOTFILES_ROOT=$(pwd -P)
+##
+# Bootstrap the installation and configuration.
+#
+# @author   René Milzarek <rene.milzarek@gmail.com>
+# @ref      Zach Holman (https://github.com/holman/dotfiles)  
+# @license  MIT license (https://github.com/neotreat/dotfiles/blob/master/LICENSE.md)
+##
 
 set -e
 
-echo ''
+# Root directory of the dotfiles
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
 
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+# Logging configuration
+LOG_ENABLED=true
+LOG_FILE="/tmp/dotfiles-bootstrap.log"
+
+# Log a message to the terminal and optionally, if configured in the $LOG_ENABLED
+# variable, also create a local log file in $LOG_FILE.
+#
+# $1  the message to be logged
+# $2  the log level (default=info, success, warn, fail)
+function log {
+
+  # Current timestamp
+  timestamp=`date +%Y-%m-%d\ %H:%M:%S`
+
+  # Log level in color
+  level="[ \033[00;34m..\033[0m ]"
+  
+  case "$2" in
+    success)
+      level="[ \033[00;32mOK\033[0m ]"
+      ;;
+    input)
+      level="[ \033[0;34m??\033[0m ]"
+      ;;
+    warn)
+      level="[ \033[0;33mWARN\033[0m ]"
+      ;;
+    fail)
+      level="[ \033[0;31mFAIL\033[0m ]"
+      ;;
+  esac
+
+  if [ $LOG_ENABLED = true ]; then
+      printf "\r $timestamp $level \t %s \n" "$1" | tee $LOG_FILE
+  else
+      printf "\r $timestamp $level \t %s \n" "$1"
+  fi
 }
 
-user () {
-  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
+# Wrapper around the log method.
+#
+# $1  the log messages
+function logWrapper {
+  while read data; do
+    log "- $data"
+  done
 }
 
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
-}
-
-setup_gitconfig () {
+# Configure the git author.
+function setup_gitconfig {
   if ! [ -f git/gitconfig.local.symlink ]
   then
-    info 'setup gitconfig'
+    log "Setup gitconfig"
 
     git_credential='cache'
     if [ "$(uname -s)" == "Darwin" ]
@@ -38,19 +74,20 @@ setup_gitconfig () {
       git_credential='osxkeychain'
     fi
 
-    user ' - What is your github author name?'
+    log "- What is your git author name?" input
     read -e git_authorname
-    user ' - What is your github author email?'
+    log "- What is your git author email?" input
     read -e git_authoremail
 
     sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
 
-    success 'gitconfig'
+    log 'Gitconfig' success
   fi
 }
 
-
-link_file () {
+# Helper function to create symlinks without automatically overwriting existing
+# configuration files.
+function link_file {
   local src=$1 dst=$2
 
   local overwrite= backup= skip=
@@ -58,21 +95,16 @@ link_file () {
 
   if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
   then
-
     if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
     then
-
       local currentSrc="$(readlink $dst)"
 
       if [ "$currentSrc" == "$src" ]
       then
-
         skip=true;
-
       else
-
-        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
-        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        log "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?" input
         read -n 1 action
 
         case "$action" in
@@ -91,9 +123,7 @@ link_file () {
           * )
             ;;
         esac
-
       fi
-
     fi
 
     overwrite=${overwrite:-$overwrite_all}
@@ -103,30 +133,31 @@ link_file () {
     if [ "$overwrite" == "true" ]
     then
       rm -rf "$dst"
-      success "removed $dst"
+      log "Removed $dst" success
     fi
 
     if [ "$backup" == "true" ]
     then
       mv "$dst" "${dst}.backup"
-      success "moved $dst to ${dst}.backup"
+      log "Moved $dst to ${dst}.backup" success
     fi
 
     if [ "$skip" == "true" ]
     then
-      success "skipped $src"
+      log "Skipped $src" success
     fi
   fi
 
   if [ "$skip" != "true" ]  # "false" or empty
   then
     ln -s "$1" "$2"
-    success "linked $1 to $2"
+    log "Linked $1 to $2" success
   fi
 }
 
-install_dotfiles () {
-  info 'installing dotfiles'
+# Install the dotfiles by symlinking.
+function install_dotfiles {
+  log 'Installing dotfiles'
 
   local overwrite_all=false backup_all=false skip_all=false
 
@@ -137,20 +168,21 @@ install_dotfiles () {
   done
 }
 
+# Install Homebrew on a Mac.
+function install_homebrew {
+  if [ "$(uname -s)" == "Darwin" ]
+  then
+    log "Installing dependencies"
+    if source bin/dot 2>/dev/null | logWrapper
+    then
+      log "Dependencies installed" success
+    else
+      log "Error installing dependencies" fail
+    fi
+  fi
+}
+
+# Run the functions
 setup_gitconfig
 install_dotfiles
-
-# If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  if source bin/dot > /tmp/dotfiles-dot 2>&1
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
-fi
-
-echo ''
-echo '  All installed!'
+install_homebrew

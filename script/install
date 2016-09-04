@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
+
+##
+# Install Homebrew.
 #
-# Run all dotfiles installers.
+# @author   René Milzarek <rene.milzarek@gmail.com>
+# @ref      Zach Holman (https://github.com/holman/dotfiles)  
+# @license  MIT license (https://github.com/neotreat/dotfiles/blob/master/LICENSE.md)
+##
 
 set -e
 
@@ -10,5 +16,5 @@ cd "$(dirname $0)"/..
 echo "› brew bundle"
 brew bundle
 
-# find the installers and run them iteratively
+# Find the installers and run them iteratively
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
