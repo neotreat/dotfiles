@@ -1,0 +1,4 @@
+donjayamanne.python
+lukehoban.Go
+msjsdiag.debugger-for-chrome
+robertohuertasm.vscode-icons
