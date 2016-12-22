@@ -12,6 +12,7 @@ brew 'openssl'
 brew 'wget'
 brew 'zsh'
 brew 'zsh-completions'
+brew 'mas'
 
 # Repository: homebrew/php
 brew 'composer'
@@ -35,23 +36,15 @@ cask 'kaleidoscope'
 cask 'lastpass'
 cask 'macdown'
 cask 'mactex'
-cask 'mendeley-desktop'
 cask 'omnifocus'
 cask 'omnigraffle'
-cask 'owncloud'
-cask 'phpstorm'
-cask 'pycharm'
 cask 'slack'
 cask 'sourcetree'
-cask 'steam'
-cask 'steelseries-engine'
 cask 'teamspeak-client'
 cask 'vagrant'
 cask 'vagrant-manager'
 cask 'viscosity'
 cask 'visual-studio-code'
-cask 'vmware-fusion7'
-cask 'webstorm'
 cask 'yubikey-neo-manager'
 
 # Note: Vagrant requires version 5.0.x, but homebrew cask installs version 5.1.x.
@@ -60,3 +53,11 @@ cask 'yubikey-neo-manager'
 #
 # cask 'virtualbox'
 # cask 'virtualbox-extension-pack'
+
+# Repository: Mac App Store
+mas 'DaisyDisk', id: 411643860
+mas 'Moom', id: 419330170
+mas 'Mouseposé', id: 405904955
+mas 'Pocket', id: 568494494
+mas 'Redacted', id: 984968384
+mas 'Reeder 3', id: 880001334
