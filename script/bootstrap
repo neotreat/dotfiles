@@ -170,6 +170,7 @@ function install_dotfiles {
 
 # Install Homebrew on a Mac.
 function install_homebrew {
+  
   if [ "$(uname -s)" == "Darwin" ]
   then
     log "Installing dependencies"
