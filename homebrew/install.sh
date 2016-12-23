@@ -1,9 +1,15 @@
 #!/bin/sh
-#
+
+##
 # Homebrew
 #
 # This installs some of the common dependencies needed (or at least desired)
 # using Homebrew.
+#
+# @author   René Milzarek <rene.milzarek@gmail.com>
+# @ref      Zach Holman (https://github.com/holman/dotfiles)  
+# @license  MIT license (https://github.com/neotreat/dotfiles/blob/master/LICENSE.md)
+##
 
 # Check for Homebrew
 if test ! $(which brew)

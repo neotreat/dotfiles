@@ -1,9 +1,14 @@
 #!/bin/sh
-#
-# dot
-#
+
+##
 # `dot` handles installation, updates, things like that. Run it periodically
 # to make sure you're on the latest and greatest.
+#
+# @author   René Milzarek <rene.milzarek@gmail.com>
+# @ref      Zach Holman (https://github.com/holman/dotfiles)  
+# @license  MIT license (https://github.com/neotreat/dotfiles/blob/master/LICENSE.md)
+##
+
 export ZSH=$HOME/.dotfiles
 
 # Set macOS defaults
