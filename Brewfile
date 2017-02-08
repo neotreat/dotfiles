@@ -25,9 +25,8 @@ cask 'boxcryptor'
 cask 'caffeine'
 cask 'docker'
 cask 'dropbox'
-cask 'evernote'
-cask 'flux'
 cask 'google-chrome'
+cask 'google-drive'
 cask 'gpgtools'
 cask 'intellij-idea'
 cask 'istat-menus'
@@ -42,18 +41,9 @@ cask 'omnigraffle'
 cask 'slack'
 cask 'sourcetree'
 cask 'teamspeak-client'
-cask 'vagrant'
-cask 'vagrant-manager'
 cask 'viscosity'
 cask 'visual-studio-code'
 cask 'yubikey-neo-manager'
-
-# Note: Vagrant requires version 5.0.x, but homebrew cask installs version 5.1.x.
-# Unfortunately this version cannot be installed through caskroom/versions. Thus
-# it has to be installed manually with its extension pack. 
-#
-# cask 'virtualbox'
-# cask 'virtualbox-extension-pack'
 
 # Repository: Mac App Store
 mas 'DaisyDisk', id: 411643860
