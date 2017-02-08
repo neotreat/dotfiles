@@ -33,7 +33,6 @@ cask 'istat-menus'
 cask 'iterm2'
 cask 'java'
 cask 'kaleidoscope'
-cask 'lastpass'
 cask 'macdown'
 cask 'mactex'
 cask 'omnifocus'
@@ -44,6 +43,7 @@ cask 'teamspeak-client'
 cask 'viscosity'
 cask 'visual-studio-code'
 cask 'yubikey-neo-manager'
+cask 'x-lite'
 
 # Repository: Mac App Store
 mas 'DaisyDisk', id: 411643860
