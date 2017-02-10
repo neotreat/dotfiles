@@ -7,12 +7,12 @@ tap 'caskroom/cask'
 
 # Repository: homebrew/bundle
 brew 'coreutils'
-brew 'nvm'
+brew 'mas'
 brew 'openssl'
 brew 'wget'
+brew 'yarn'
 brew 'zsh'
 brew 'zsh-completions'
-brew 'mas'
 
 # Repository: homebrew/php
 brew 'composer'
