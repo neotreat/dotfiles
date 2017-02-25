@@ -1,0 +1,7 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "window.zoomLevel": 1,
+    "editor.fontSize": 12,
+    "editor.rulers": [80, 120],
+    "git.autorefresh": false
+}
