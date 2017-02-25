@@ -44,6 +44,7 @@ cask 'sourcetree'
 cask 'teamspeak-client'
 cask 'viscosity'
 cask 'visual-studio-code'
+cask 'vmware-fusion7'
 cask 'yubikey-neo-manager'
 cask 'x-lite'
 
