@@ -37,6 +37,8 @@ cask 'macdown'
 cask 'mactex'
 cask 'omnifocus'
 cask 'omnigraffle'
+cask 'postman'
+cask 'sketch'
 cask 'slack'
 cask 'sourcetree'
 cask 'teamspeak-client'
@@ -48,6 +50,7 @@ cask 'x-lite'
 # Repository: Mac App Store
 mas 'DaisyDisk', id: 411643860
 mas 'Moom', id: 419330170
+mas 'MoneyMoney', id: 872698314
 mas 'Mouseposé', id: 405904955
 mas 'Pocket', id: 568494494
 mas 'Redacted', id: 984968384
