@@ -44,7 +44,7 @@ cask 'sourcetree'
 cask 'teamspeak-client'
 cask 'viscosity'
 cask 'visual-studio-code'
-cask 'vmware-fusion7'
+cask 'vmware-fusion'
 cask 'yubikey-neo-manager'
 cask 'x-lite'
 
@@ -56,3 +56,4 @@ mas 'Mouseposé', id: 405904955
 mas 'Pocket', id: 568494494
 mas 'Redacted', id: 984968384
 mas 'Reeder 3', id: 880001334
+mas 'The Unarchiver', id: 425424353
