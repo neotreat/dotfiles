@@ -40,7 +40,5 @@ which I linked.
 Furthermore I got inspired by the dotfiles of the following developers, which are also
 mentioned in the respective files:
 
-* Repo1
-* Repo2
-* ...
+* int3h dotfiles, [https://github.com/int3h/dotfiles](https://github.com/int3h/dotfiles)
 
