@@ -5,19 +5,63 @@ tap 'homebrew/bundle'
 tap 'homebrew/php'
 tap 'caskroom/cask'
 
-# Repository: homebrew/bundle
+# ------------------------------------------------------------------------------
+# Installations requiring sudo permissions
+# ------------------------------------------------------------------------------
+
+# Please place tools, which require sudo permissions during the installation at 
+# the top to allow the script to run unattended afterwards
+
+
+# ------------------------------------------------------------------------------
+# GNU and/or newer versions of standard programs
+# ------------------------------------------------------------------------------
+
 brew 'coreutils'
-brew 'mas'
 brew 'openssl'
-brew 'wget'
+
+# ------------------------------------------------------------------------------
+# Coding tools
+# ------------------------------------------------------------------------------
+
+brew 'composer'
 brew 'yarn'
+
+# ------------------------------------------------------------------------------
+# Company code dependencies
+# ------------------------------------------------------------------------------
+
+brew 'awscli'
+
+# ------------------------------------------------------------------------------
+# Shell enhancements & script dependencies
+# ------------------------------------------------------------------------------
+
 brew 'zsh'
 brew 'zsh-completions'
 
-# Repository: homebrew/php
-brew 'composer'
 
-# Repository: caskroom/cask
+# ------------------------------------------------------------------------------
+# Useful system utilities
+# ------------------------------------------------------------------------------
+
+brew 'htop'
+brew 'pstree'
+brew 'tree'
+brew 'wget'
+
+# ------------------------------------------------------------------------------
+# Misc. other programs
+# ------------------------------------------------------------------------------
+
+# Command line tool wrapper for macOS' App Store, which allows to script the 
+# installation of purchased apps
+brew 'mas'
+
+# ------------------------------------------------------------------------------
+# Casks
+# ------------------------------------------------------------------------------
+
 cask 'amazon-music'
 cask 'appcleaner'
 cask 'arduino'
@@ -50,7 +94,10 @@ cask 'vmware-fusion'
 cask 'yubikey-neo-manager'
 cask 'x-lite'
 
-# Repository: Mac App Store
+# ------------------------------------------------------------------------------
+# Mac App Store
+# ------------------------------------------------------------------------------
+
 mas 'DaisyDisk', id: 411643860
 mas 'Moom', id: 419330170
 mas 'MoneyMoney', id: 872698314
