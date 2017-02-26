@@ -25,6 +25,9 @@ then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"  < /dev/null
   fi
 
+  # Create a folder for the Casks
+  sudo mkdir /usr/local/Caskroom
+  sudo chown $(whoami):admin /usr/local/Caskroom/
 fi
 
 exit 0
