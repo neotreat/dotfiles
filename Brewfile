@@ -27,7 +27,9 @@ cask 'docker'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'google-drive'
-cask 'gpgtools'
+# Breaking the automatic installation, thus commented out for now
+# see https://github.com/caskroom/homebrew-cask/issues/29297
+#cask 'gpgtools'
 cask 'intellij-idea'
 cask 'istat-menus'
 cask 'iterm2'
