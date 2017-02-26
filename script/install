@@ -14,7 +14,7 @@ cd "$(dirname $0)"/..
 
 # Run Homebrew through the Brewfile
 echo "› brew bundle"
-brew bundle
+brew bundle --verbose
 
 # Find the installers and run them iteratively
 echo "Running installers"

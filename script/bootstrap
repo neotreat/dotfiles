@@ -174,7 +174,7 @@ function install_homebrew {
   if [ "$(uname -s)" == "Darwin" ]
   then
     log "Installing dependencies"
-    if source bin/dot 2>/dev/null | logWrapper
+    if source bin/dot
     then
       log "Dependencies installed" success
     else
