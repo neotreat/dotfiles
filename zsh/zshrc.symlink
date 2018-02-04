@@ -99,5 +99,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Ansible inventory
+export ANSIBLE_HOSTS="/etc/ansible/ec2.py"
+export EC2_INI_PATH="/etc/ansible/ec2.ini"
+
 # Yarn Global Binaries
 export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
