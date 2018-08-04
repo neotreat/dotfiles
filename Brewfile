@@ -45,9 +45,11 @@ brew 'openssl'
 # Coding tools
 # ------------------------------------------------------------------------------
 
+brew 'ansible'
 brew 'node@8'
-brew 'python@2'
+brew 'python'
 brew 'python3'
+brew 'terraform'
 brew 'yarn'
 
 # ------------------------------------------------------------------------------
