@@ -7,9 +7,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # GPG agent SSH support
 export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
-# Ruby environment
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
